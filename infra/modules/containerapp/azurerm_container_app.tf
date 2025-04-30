@@ -25,13 +25,13 @@ resource "azurerm_container_app" "web" {
 
   # Registry認証
   registry {
-    server               = azurerm_container_registry.this.login_server
-    username             = azurerm_container_registry.this.admin_username
+    server               = var.registry_login_server
+    username             = var.registry_admin_username
     password_secret_name = "registry-password"
   }
 
   secret {
     name  = "registry-password"
-    value = azurerm_container_registry.this.admin_password
+    value = var.registry_admin_password
   }
 }
