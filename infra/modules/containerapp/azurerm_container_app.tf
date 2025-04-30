@@ -8,7 +8,7 @@ resource "azurerm_container_app" "web" {
   template {
     container {
       name   = "web"
-      image  = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
+      image  = "https://${var.registry_login_server}/${var.image_name}:latest"
       cpu    = "0.5"
       memory = "1Gi"
     }

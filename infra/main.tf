@@ -29,18 +29,34 @@ module "resource_providers" {
   ]
 }
 
-# Create a virtual network
-module "network" {
-  source         = "./modules/network"
+# Log Analytics Module
+module "log_analytics" {
+  source         = "./modules/log_analytics"
   resource_group = azurerm_resource_group.resource_group
 }
 
-# Virtual Machine
-module "vm" {
-  source                       = "./modules/vm"
-  resource_group               = azurerm_resource_group.resource_group
-  network_interface_web_nic_id = module.network.network_interface_web_nic_id
-  vm_size                      = var.vm_size
-  admin_username               = var.admin_username
-  vm_name                      = var.vm_name
+# Container Registry Module
+module "container_registry" {
+  source         = "./modules/container_registry"
+  resource_group = azurerm_resource_group.resource_group
+}
+
+# Bash
+module "bash" {
+  source                = "./modules/bash"
+  image_name            = var.image_name
+  registry_name         = module.container_registry.registry_name
+  registry_login_server = module.container_registry.registry_login_server
+}
+
+# Container App Module
+module "container_app" {
+  source                     = "./modules/container_app"
+  resource_group             = azurerm_resource_group.resource_group
+  log-analytics-workspace-id = module.log_analytics.log-analytics-workspace-id
+  registry_login_server      = module.container_registry.registry_login_server
+  registry_admin_username    = module.container_registry.registry_admin_username
+  registry_admin_password    = module.container_registry.registry_admin_password
+  registry_name              = module.container_registry.registry_name
+  image_name                 = var.image_name
 }
