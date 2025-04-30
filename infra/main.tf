@@ -27,7 +27,7 @@ module "resource_providers" {
     "Microsoft.App",
     "Microsoft.ContainerRegistry",
     "Microsoft.OperationalInsights",
-    "Microsoft.Insights"
+    "microsoft.insights"
   ]
 }
 
