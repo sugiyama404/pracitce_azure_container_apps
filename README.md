@@ -1,0 +1,1 @@
+# pracitce_azure_container_apps
