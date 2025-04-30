@@ -26,7 +26,8 @@ module "resource_providers" {
   providers_to_register = [
     "Microsoft.App",
     "Microsoft.ContainerRegistry",
-    "Microsoft.OperationalInsights"
+    "Microsoft.OperationalInsights",
+    "Microsoft.Insights"
   ]
 }
 
