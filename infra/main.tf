@@ -24,7 +24,7 @@ module "resource_providers" {
   source = "./modules/resource_providers"
 
   providers_to_register = [
-    "Microsoft.Web",
+    "Microsoft.App",
     "Microsoft.ContainerRegistry",
     "Microsoft.OperationalInsights"
   ]
