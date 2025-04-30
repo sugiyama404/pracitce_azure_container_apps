@@ -1,5 +1,5 @@
 # Azure Container Registry
-resource "azurerm_container_registry" "this" {
+resource "azurerm_container_registry" "main" {
   name                = "acrcontainerapps${random_string.suffix.result}"
   location            = var.resource_group.location
   resource_group_name = var.resource_group.name

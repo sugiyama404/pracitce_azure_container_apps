@@ -2,7 +2,7 @@
 resource "azurerm_container_app" "web" {
   name                         = "ca-web"
   container_app_environment_id = azurerm_container_app_environment.this.id
-  resource_group_name          = azurerm_resource_group.this.name
+  resource_group_name          = var.resource_group.name
   revision_mode                = "Single"
 
   template {
@@ -11,20 +11,6 @@ resource "azurerm_container_app" "web" {
       image  = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
       cpu    = "0.5"
       memory = "1Gi"
-    }
-
-    # スケール設定
-    min_replicas = 1
-    max_replicas = 10
-
-    # オートスケール用のルール
-    scale_rule {
-      name = "http-rule"
-      http {
-        metadata = {
-          concurrentRequests = "10"
-        }
-      }
     }
   }
 
