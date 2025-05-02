@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>確認用アプリ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background: #4a90e2;
+            color: white;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .server-info {
+            background: #f1f8e9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Nginx 確認用アプリ</h1>
+        </header>
+
+        <div class="status">
+            <h2>サーバーステータス: <span style="color: green;">稼働中</span></h2>
+            <p>Nginxサーバーは正常に動作しています。</p>
+        </div>
+
+        <div class="server-info">
+            <h3>サーバー情報</h3>
+            <p>Webサーバー: Nginx</p>
+            <p>ポート: 80</p>
+            <p>日時: <span id="current-time"></span></p>
+        </div>
+
+        <footer>
+            <p>© 2025 簡単確認用アプリ</p>
+        </footer>
+    </div>
+
+    <script>
+        // 現在の日時を表示
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleString();
+        }
+
+        // ページロード時と1秒ごとに時間を更新
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+
+</html>
