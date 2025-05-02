@@ -6,7 +6,7 @@ resource "azurerm_monitor_diagnostic_setting" "container_app_env" {
 
   # Log Analytics ログの診断設定
   enabled_log {
-    category = "AuditEvent"
+    category_group = "AllLogs"
   }
 
   metric {
